@@ -39,18 +39,8 @@ my_client.set_headers({'HEADER_NAME': 'HEADER_VALUE'})
 
 uploader = my_client.uploader('path/to/file.ext', chunk_size=200)
 
-# Include a checksum with every chunk. Supported algorithms are
-# crc32, crc32c, md5, sha1 (the default), sha256, and sha512.
-# crc32c requires the optional crc32c installation extra shown above.
-# The selected algorithm must also be supported by the tus server.
-checksummed_uploader = my_client.uploader(
-    'path/to/file.ext',
-    upload_checksum=True,
-    checksum_algorithm='crc32c',
-)
-
 # A file stream may also be passed in place of a file path.
-fs = open('path/to/file.ext', mode=)
+fs = open('path/to/file.ext', mode='rb')
 uploader = my_client.uploader(file_stream=fs, chunk_size=200)
 
 # Upload a chunk i.e 200 bytes.
